@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Missing Child</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+        }
+        .card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 1rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .success-message {
+            color: green;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card p-5 shadow-lg w-100" style="max-width: 500px;">
+        <h2 class="mb-4 text-primary text-center">Add Missing Child Info</h2>
+        
+        {% if success %}
+            <div class="success-message">✅ Child information added successfully!</div>
+        {% endif %}
+        
+        <form action="{{ url_for('add') }}" method="post" enctype="multipart/form-data" class="w-100 mt-4">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Child Name" required class="form-control mb-3">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Parent Email" required class="form-control mb-3">
+            </div>
+            <div class="form-group">
+                <input type="file" name="file" required class="form-control-file mb-4">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add</button>
+        </form>
+        
+        <div class="text-center mt-3">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Missing Child Identification using CNN</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        .card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff5722;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container">
+        <div class="card p-5 shadow-sm text-center" style="max-width: 500px; margin: auto;">
+            <h1 class="mb-4">Missing Child Identification using CNN</h1>
+            <a href="{{ url_for('add') }}" class="btn btn-primary btn-block mb-3">Add Child</a>
+            <form action="{{ url_for('search') }}" method="post" enctype="multipart/form-data" class="w-100">
+                <div class="form-group">
+                    <input type="file" name="file" required class="form-control-file mb-3">
+                </div>
+                <button type="submit" class="btn btn-success btn-block">Search Child</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

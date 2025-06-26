@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        .card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .btn-warning {
+            background-color: #f39c12;
+            border: none;
+        }
+        .btn-warning:hover {
+            background-color: #e67e22;
+        }
+        .img-thumbnail {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .d-flex {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+        .mr-3 {
+            margin-right: 15px;
+        }
+        .matched-img {
+            margin-top: -20px;
+            margin-left: 20px;
+        }
+        .image-label {
+            margin-right: 10px;
+        }
+        .metrics img.confusion-matrix {
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container">
+        <div class="card p-5 shadow-sm text-center" style="max-width: 600px; margin: auto;">
+            {% if matched %}
+                <h2 class="text-success mb-4">Match Found!</h2>
+                <p><strong>Name:</strong> {{ name }}</p>
+                <p><strong>Email:</strong> {{ email }}</p>
+                <div class="d-flex justify-content-start mb-3">
+                    <div class="d-flex align-items-center mr-4">
+                        <h4 class="image-label">Uploaded Image:</h4>
+                        <img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" class="img-thumbnail">
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <h4 class="image-label">Matched Image:</h4>
+                        <img src="{{ url_for('static', filename='uploads/' + matched_image) }}" class="img-thumbnail matched-img">
+                    </div>
+                </div>
+            {% else %}
+                <h2 class="text-danger mb-4">No Match Found</h2>
+            {% endif %}
+
+            {% if accuracy is not none and precision is not none %}
+            <div class="metrics text-left">
+                <h4>Evaluation Metrics</h4>
+                <p><strong>Accuracy:</strong> {{ (accuracy * 100) | round(2) }}%</p>
+                <p><strong>Precision:</strong> {{ (precision * 100) | round(2) }}%</p>
+                <h5>Confusion Matrix:</h5>
+                <img src="{{ url_for('static', filename=confusion_matrix_image) }}" alt="Confusion Matrix" class="confusion-matrix">
+            </div>
+            {% endif %}
+            
+            <br><br>
+            <a href="{{ url_for('index') }}" class="btn btn-warning mt-3">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
