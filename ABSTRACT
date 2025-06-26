@@ -1,0 +1,10 @@
+ABSTRACT
+
+Every year, thousands of children go missing in India due to abduction, trafficking, accidents, or displacement. Traditional identification methods are often slow, manual, and error-prone, making it difficult to reunite children with their families in a timely manner. This project presents an automated facial recognition system designed to assist law enforcement agencies, NGOs, and families in identifying and locating missing children quickly and accurately.
+The system uses a pre-trained ResNet-based Convolutional Neural Network (CNN) via the dlib library to extract deep facial features from uploaded images. These features are converted into 128-dimensional facial encodings, which are then compared against a database of known images using Euclidean distance. If a match is found, the result is displayed on a web-based interface, and an automatic email notification is sent to the registered parent or guardian using SMTP, providing immediate alerts and further action guidance.
+Built with Python and Flask, the system is lightweight, user-friendly, and scalable. It is designed to run efficiently on both local servers and cloud platforms, and can be integrated with police databases, public surveillance networks, and child welfare portals. By automating the identification process and enabling real-time notifications, this solution offers a practical and impactful approach to improving child safety and increasing the chances of successful reunification.
+
+
+
+
+
